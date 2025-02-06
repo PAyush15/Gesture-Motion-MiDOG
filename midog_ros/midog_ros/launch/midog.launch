@@ -1,0 +1,15 @@
+<launch>
+	<arg name="robot" default="midog"/>
+	<param name="robot" value="$(arg robot)" />
+	
+	<group ns="$(arg robot)">
+		<node pkg="midog_ros" name="bno085" type="pub_bno085.py" output="screen" respawn="true" />
+		<node pkg="midog_ros" name="rpicam" type="pub_rpicam.py" output="screen" respawn="true" />
+		<node pkg="midog_ros" name="ePaper" type="display_ip.py" output="screen" respawn="true" />
+		<node pkg="opencat_server" name="opencat" type="opencat_service_node" output="screen" respawn="true" />
+		<param name="tf_prefix" value="$(arg robot)" />
+		<param name="robot_description" command="$(find xacro)/xacro $(find bittle_description)/urdf/bittle.xacro" />
+		<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+		<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	</group>
+</launch>
