@@ -1,0 +1,9 @@
+open palm - stop
+close palm - walk forward
+ok sign - greeting
+rock and roll sign - stretch
+thumb - sit
+index finger - crawl left
+pinky finger -  crawl right
+2 fingers - sleep
+3 fingers - walk backward

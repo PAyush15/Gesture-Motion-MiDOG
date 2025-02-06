@@ -1,0 +1,10 @@
+PAUSE_MOTION - open palm
+WALK - fist
+PEE - pinky finger
+PUSH_UP - first finger up
+GREETING - rock and roll gesture
+CRAWL_LEFT - 2 fingers
+CRAWL_RIGHT - 3 fingers
+STRETCH - 4 fingers
+PLAY_MELODY - thumb and pinky finger with fist
+

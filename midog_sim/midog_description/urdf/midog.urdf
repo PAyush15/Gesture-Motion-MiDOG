@@ -1,0 +1,596 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+  <robot name="midog">
+    
+    <material name="white">
+      <color rgba="1 1 1 1"/>
+    </material>
+    <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+
+    <link name="base-frame-link" xmlns:xacro="http://www.ros.org/wiki/xacro">
+      <!--inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.108"/>
+        <inertia ixx="0.01562" ixy="0" ixz="-2e-05" iyy="0.00613" iyz="0" izz="0.02107"/>
+      </inertial-->
+      <visual name="base_frame">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/base_frame.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="base_frame_c">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/base_frame.001.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="battery-link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.056"/>
+        <inertia ixx="0.00337" ixy="0" ixz="0" iyy="0.00044" iyz="0.00031" izz="0.00361"/>
+      </inertial>
+      <visual name="battery">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/battery.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="battery_c">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/battery.001.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="cover-link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.013"/>
+        <inertia ixx="0.00039" ixy="0" ixz="0" iyy="0.00057" iyz="0" izz="0.0009"/>
+      </inertial>
+      <visual name="cover">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/cover.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="cover_c">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/cover.001.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="imu_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="imu">
+        <origin xyz="0 0 0" rpy="0 0 3.14159"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/Cube.011.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="left-back-knee-link">
+      <inertial>
+        <origin xyz="-0.08998 0 -0.14638" rpy="0 0 0"/>
+        <mass value="0.017"/>
+        <inertia ixx="6e-05" ixy="-2e-05" ixz="0" iyy="0.00065" iyz="-6e-05" izz="0.00063"/>
+      </inertial>
+      <visual name="left_back_knee">
+        <origin xyz="-0.08998 0 -0.14638" rpy="-1.5708 1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/left_knee.001.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="left_back_knee_c">
+        <origin xyz="-0.08998 0 -0.14638" rpy="-1.5708 1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/left_knee.002.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="left-back-shoulder-link">
+      <inertial>
+        <origin xyz="0 -0.24575 0.04372" rpy="0 0 0"/>
+        <mass value="0.006"/>
+        <inertia ixx="0.00044" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="0.00044"/>
+      </inertial>
+      <visual name="left_back_shoulder">
+        <origin xyz="0 -0.24575 0.04372" rpy="-1.5708 1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/shoulder.001.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="left_back_shoulder_c">
+        <origin xyz="0 -0.24575 0.04372" rpy="-1.5708 1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/shoulder.004.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="left-front-knee-link">
+      <inertial>
+        <origin xyz="-0.09232 0 -0.14614" rpy="0 0 0"/>
+        <mass value="0.017"/>
+        <inertia ixx="6e-05" ixy="-2e-05" ixz="0" iyy="0.00065" iyz="-6e-05" izz="0.00063"/>
+      </inertial>
+      <visual name="left_front_knee">
+        <origin xyz="-0.09232 0 -0.14614" rpy="-1.5708 1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/left_knee.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="left_front_knee_c">
+        <origin xyz="-0.09232 0 -0.14614" rpy="-1.5708 1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/left_knee.003.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="left-front-shoulder-link">
+      <inertial>
+        <origin xyz="0 -0.24575 0.04372" rpy="0 0 0"/>
+        <mass value="0.006"/>
+        <inertia ixx="0.00044" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="0.00044"/>
+      </inertial>
+      <visual name="left_front_shoulder">
+        <origin xyz="0 -0.24575 0.04372" rpy="-1.5708 1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/shoulder.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="left_front_shoulder_c">
+        <origin xyz="0 -0.24575 0.04372" rpy="-1.5708 1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/shoulder.007.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="mainboard_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
+      <visual name="mainboard">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/Plane.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="right-back-knee-link">
+      <inertial>
+        <origin xyz="0.08426 -0.00238 -0.1382" rpy="0 0 0"/>
+        <mass value="0.017"/>
+        <inertia ixx="6e-05" ixy="-1e-05" ixz="0" iyy="0.00065" iyz="-3e-05" izz="0.00064"/>
+      </inertial>
+      <visual name="right_back_knee">
+        <origin xyz="0.08426 -0.00238 -0.1382" rpy="-1.5708 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/right_knee.001.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="right_back_knee_c">
+        <origin xyz="0.08426 -0.00238 -0.1382" rpy="-1.5708 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/right_knee.002.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="right-back-shoulder-link">
+      <inertial>
+        <origin xyz="0 0.24575 0.0777" rpy="0 0 0"/>
+        <mass value="0.006"/>
+        <inertia ixx="0.00044" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="0.00044"/>
+      </inertial>
+      <visual name="right_back_shoulder">
+        <origin xyz="0 0.24575 0.0777" rpy="1.5708 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/shoulder.002.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="right_back_shoulder_c">
+        <origin xyz="0 0.24575 0.0777" rpy="1.5708 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/shoulder.005.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="right-front-knee-link">
+      <inertial>
+        <origin xyz="0.09497 -0.00238 -0.1382" rpy="0 0 0"/>
+        <mass value="0.017"/>
+        <inertia ixx="6e-05" ixy="-1e-05" ixz="0" iyy="0.00065" iyz="-3e-05" izz="0.00064"/>
+      </inertial>
+      <visual name="right_front_knee">
+        <origin xyz="0.09497 -0.00238 -0.1382" rpy="-1.5708 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/right_knee.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="right_front_knee_c">
+        <origin xyz="0.09497 -0.00238 -0.1382" rpy="-1.5708 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/right_knee.003.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="right-front-shoulder-link">
+      <inertial>
+        <origin xyz="0 0.24575 0.0777" rpy="0 0 0"/>
+        <mass value="0.006"/>
+        <inertia ixx="0.00044" ixy="0" ixz="0" iyy="2e-05" iyz="0" izz="0.00044"/>
+      </inertial>
+      <visual name="right_front_shoulder">
+        <origin xyz="0 0.24575 0.0777" rpy="1.5708 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/shoulder.003.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </visual>
+      <collision name="right_front_shoulder_c">
+        <origin xyz="0 0.24575 0.0777" rpy="1.5708 -1.5708 0"/>
+        <geometry>
+          <mesh filename="package://midog_description/meshes/obj/shoulder.006.obj" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="battery-joint" type="fixed">
+      <origin xyz="0.00047 -0.00917 -0.04848" rpy="0 0 0"/>
+      <parent link="base-frame-link"/>
+      <child link="battery-link"/>
+    </joint>
+
+    <joint name="cover-joint" type="fixed">
+      <origin xyz="0.0014 0 0.1251" rpy="0 0 0"/>
+      <parent link="base-frame-link"/>
+      <child link="cover-link"/>
+    </joint>
+
+    <joint name="imu_joint" type="fixed">
+      <origin xyz="-0.00652 0.00827 0.00586" rpy="0 0 -3.14159"/>
+      <parent link="mainboard_link"/>
+      <child link="imu_link"/>
+    </joint>
+
+    <joint name="left_back_knee_joint" type="revolute">
+      <origin xyz="0 -0.49172 0" rpy="0 0 0"/>
+      <parent link="left-back-shoulder-link"/>
+      <child link="left-back-knee-link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.22173" upper="1.48353" effort="1.0" velocity="1.5708"/>
+    </joint>
+
+    <joint name="left_back_shoulder_joint" type="revolute">
+      <origin xyz="-0.44596 -0.51923 -0.02102" rpy="1.5708 0 -1.5708"/>
+      <parent link="base-frame-link"/>
+      <child link="left-back-shoulder-link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.5708" upper="1.22173" effort="1.0" velocity="1.5708"/>
+    </joint>
+
+    <joint name="left_front_knee_joint" type="revolute">
+      <origin xyz="6e-05 -0.49172 0" rpy="0 0 0"/>
+      <parent link="left-front-shoulder-link"/>
+      <child link="left-front-knee-link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.22173" upper="1.48353" effort="1.0" velocity="1.5708"/>
+    </joint>
+
+    <joint name="left_front_shoulder_joint" type="revolute">
+      <origin xyz="-0.44596 0.52264 -0.02102" rpy="1.5708 0 -1.5708"/>
+      <parent link="base-frame-link"/>
+      <child link="left-front-shoulder-link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.5708" upper="1.22173" effort="1.0" velocity="1.5708"/>
+    </joint>
+
+    <joint name="mainboard_joint" type="fixed">
+      <origin xyz="0.00652 -0.00827 0.06423" rpy="0 0 0"/>
+      <parent link="base-frame-link"/>
+      <child link="mainboard_link"/>
+    </joint>
+
+    <joint name="right_back_knee_joint" type="revolute">
+      <origin xyz="0.00015 0.49938 0.03996" rpy="0 0 3.14159"/>
+      <parent link="right-back-shoulder-link"/>
+      <child link="right-back-knee-link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.22173" upper="1.48353" effort="1.0" velocity="1.5708"/>
+    </joint>
+
+    <joint name="right_back_shoulder_joint" type="revolute">
+      <origin xyz="0.45149 -0.51923 -0.02102" rpy="-1.5708 0 -1.5708"/>
+      <parent link="base-frame-link"/>
+      <child link="right-back-shoulder-link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.5708" upper="1.22173" effort="1.0" velocity="1.5708"/>
+    </joint>
+
+    <joint name="right_front_knee_joint" type="revolute">
+      <origin xyz="6e-05 0.49938 0.03996" rpy="0 0 3.14159"/>
+      <parent link="right-front-shoulder-link"/>
+      <child link="right-front-knee-link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.22173" upper="1.48353" effort="1.0" velocity="1.5708"/>
+    </joint>
+
+    <joint name="right_front_shoulder_joint" type="revolute">
+      <origin xyz="0.45149 0.52264 -0.02102" rpy="-1.5708 0 -1.5708"/>
+      <parent link="base-frame-link"/>
+      <child link="right-front-shoulder-link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.5708" upper="1.22173" effort="1.0" velocity="1.5708"/>
+    </joint>
+    
+  <!-- ROS control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>midog</robotNamespace>
+    </plugin>
+  </gazebo>
+
+  <!-- Camera -->
+  <link name="camera-link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0.0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <!-- Camera Joint -->
+  <joint name="camera_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0.5 0.25" rpy="0 0 ${pi/2}"/>
+    <parent link="base-frame-link"/>
+    <child link="camera-link"/>
+  </joint>
+
+  <!-- Camera Gazebo -->
+  <gazebo reference="camera-link">
+    <sensor type="camera" name="camera1">
+      <visualize>true</visualize>
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link_optical</frameName>
+        <hackBaseline>0.0</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0.0</Cx>
+        <Cy>0.0</Cy>
+        <focalLength>0.0</focalLength>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+  <!-- Transmission -->
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_back_knee_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_back_shoulder_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_front_knee_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_front_shoulder_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_back_knee_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_back_shoulder_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_front_knee_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor7">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran8">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_front_shoulder_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor8">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- Lidar -->
+  <joint name="laser_joint" type="fixed">
+    <parent link="base-frame-link"/>
+    <child link="laser-frame"/>
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
+  </joint>
+
+  <link name="laser-frame">
+      <visual>
+          <geometry>
+              <cylinder radius="0.05" length="0.04"/>
+          </geometry>
+          <material name="red"/>
+      </visual>
+      <collision>
+          <geometry>
+              <cylinder radius="0.05" length="0.04"/>
+          </geometry>
+      </collision>
+      <!--xacro:inertial_cylinder mass="0.1" length="0.04" radius="0.05">
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+      </xacro:inertial_cylinder-->
+  </link>
+
+  <gazebo reference="laser-frame">
+      <material>Gazebo/Red</material>
+
+      <sensor name="laser" type="ray">
+          <pose> 0 0 0 0 0 0 </pose>
+          <visualize>true</visualize>
+          <update_rate>10</update_rate>
+          <ray>
+              <scan>
+                  <horizontal>
+                      <samples>360</samples>
+                      <min_angle>-3.14</min_angle>
+                      <max_angle>3.14</max_angle>
+                  </horizontal>
+              </scan>
+              <range>
+                  <min>0.3</min>
+                  <max>12</max>
+              </range>
+          </ray>
+          <plugin name="laser_controller" filename="libgazebo_ros_laser.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>15.0</updateRate>
+            <topicName>ray_scan</topicName>
+            <frameName>ray_model</frameName>
+          </plugin>
+      </sensor>
+    </gazebo>
+
+    <!-- IMU -->
+    <gazebo reference="imu_link">
+      <gravity>true</gravity>
+      <sensor name="imu_sensor" type="imu">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <visualize>true</visualize>
+        <topic>__default_topic__</topic>
+        <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+          <topicName>imu</topicName>
+          <bodyName>imu_link</bodyName>
+          <updateRateHZ>10.0</updateRateHZ>
+          <gaussianNoise>0.0</gaussianNoise>
+          <xyzOffset>0 0 0</xyzOffset>
+          <rpyOffset>0 0 0</rpyOffset>
+          <frameName>imu_link</frameName>
+          <initialOrientationAsReference>false</initialOrientationAsReference>
+        </plugin>
+        <pose>0 0 0 0 0 0</pose>
+      </sensor>
+    </gazebo>
+
+  </robot>
