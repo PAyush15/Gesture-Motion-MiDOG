@@ -47,7 +47,7 @@ def listener():
     
 if __name__ == "__main__":
     if(len(sys.argv) != 2):
-        rospy.ERROR("need robot name")
+        rospy.ERROR("Need robot name")
 
     robot_name = str(sys.argv[1])    
     dog = Controller(robot_name)
